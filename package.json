@@ -12,7 +12,7 @@
     "node": ">=20"
   },
   "bin": {
-    "skillctl": "./dist/cli.js"
+    "skillctl": "dist/cli.js"
   },
   "files": [
     "dist"
