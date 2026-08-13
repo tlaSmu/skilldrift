@@ -1,5 +1,5 @@
 {
-  "name": "skilldrift",
+  "name": "@smugltonti/skilldrift",
   "version": "0.1.0",
   "type": "module",
   "description": "Skill drift analysis and local inventory tool",

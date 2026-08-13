@@ -19,13 +19,13 @@ Inventory locally installed AI-agent skills across Claude Code, OMP, Codex, and 
 Run a local inventory without installing globally:
 
 ```sh
-npx skilldrift scan
+npx @smugltonti/skilldrift scan
 ```
 
 Or install the CLI:
 
 ```sh
-npm install --global skilldrift
+npm install --global @smugltonti/skilldrift
 skillctl scan
 ```
 
