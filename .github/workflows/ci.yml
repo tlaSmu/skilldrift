@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Verify package dry-run (Ubuntu Node 20)
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 20
+        run: |
+          node -e '
+            const { execSync } = require("child_process");
+            const output = JSON.parse(execSync("npm pack --dry-run --json").toString());
+            const files = output[0].files.map(f => f.path);
+            if (!files.includes("dist/cli.js")) {
+              console.error("Missing dist/cli.js in package output");
+              process.exit(1);
+            }
+          '

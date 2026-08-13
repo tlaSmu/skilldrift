@@ -1,0 +1,13 @@
+[scan]
+depth = 4
+maxFiles = 1000
+
+[[harness.custom]]
+id = "generic-agent"
+layout = "dir-skill-md"
+roots = ["../project/skills:project:40"]
+
+[[harness.custom]]
+id = "notes-agent"
+layout = "flat-md"
+roots = ["../project/flat-skills:user:15"]

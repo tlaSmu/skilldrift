@@ -1,0 +1,81 @@
+name: Skill discovery report
+description: Report an incorrect root, adapter, inventory, diagnostic, or output result.
+title: "discovery: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report security vulnerabilities through the private process in SECURITY.md, not this form.
+        Redact usernames, home-directory paths, skill content, tokens, and credentials.
+  - type: dropdown
+    id: harness
+    attributes:
+      label: Harness
+      description: Select every adapter affected by the report.
+      multiple: true
+      options:
+        - Claude Code
+        - OMP
+        - Codex
+        - Antigravity
+        - Custom harness
+        - General CLI output
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: skilldrift version or commit
+      placeholder: "0.1.0 or abc1234"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Include operating system, Node.js version, and shell or terminal when output is affected.
+      placeholder: "macOS 15, Node.js 22.0.0, zsh"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and configuration
+      description: Provide the exact command and a sanitized .skillctl.toml snippet if relevant.
+      placeholder: |
+        skillctl scan --plain
+
+        [scan]
+        workspaces = ["~/example-projects"]
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State the root, skill, warning, or output behavior you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include sanitized terminal output or JSON when available.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide a small directory layout or fixture that reproduces the issue without private skill data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I removed private paths, skill content, tokens, and credentials.
+          required: true
+        - label: I searched existing issues for the same report.
+          required: true

@@ -1,0 +1,48 @@
+{
+  "name": "skilldrift",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Skill drift analysis and local inventory tool",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlaSmu/skilldrift.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "skillctl": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "citty": "^0.2.2",
+    "ignore": "^7.0.6",
+    "ora": "^9.4.1",
+    "picocolors": "^1.1.1",
+    "smol-toml": "^1.8.0",
+    "string-width": "^8.2.2",
+    "tinyglobby": "^0.2.17",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@types/node": "^20.19.0",
+    "eslint": "^10.0.0",
+    "globals": "^17.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.10"
+  }
+}

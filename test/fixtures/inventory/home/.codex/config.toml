@@ -1,0 +1,5 @@
+[plugins."sample-plugin@official-store"]
+enabled = true
+
+[plugins."disabled-plugin@official-store"]
+enabled = false

@@ -1,0 +1,35 @@
+# Private planning material
+/.dev-docs/
+
+# Dependencies and generated build/test output
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.vitest/
+*.tsbuildinfo
+
+# Local environment and registry credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+/.npmrc
+
+# Generated skillctl reports
+/skills-report.html
+/skills-report.json
+/skills-report.md
+
+# AI
+AGENTS.md
+
+# Logs, editor state, and operating-system metadata
+*.log
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
