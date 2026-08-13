@@ -66,7 +66,7 @@ export function parseSkill(source: SkillSource, homeDir: string): SkillRecord {
     }
   }
 
-  if (declaredName !== null && declaredName !== derivedName) {
+  if (declaredName !== null && canonicalSkillName(declaredName) !== canonicalSkillName(derivedName)) {
     issues.push('frontmatter.name-mismatch');
   }
 
@@ -162,4 +162,8 @@ export function parseSkill(source: SkillSource, homeDir: string): SkillRecord {
     birthtime: birthtimeIso,
     issues: Array.from(new Set(issues)).sort()
   };
+}
+
+function canonicalSkillName(name: string): string {
+  return name.trim().toLocaleLowerCase().replaceAll('_', '-');
 }

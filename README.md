@@ -118,6 +118,10 @@ skillctl ls --sort mtime --long
 
 The default listing includes skill name, harness, scope, symlink and resource indicators, approximate size, diagnostics, and path. `--long` adds a description row.
 
+An indexed listing renders the discovered copies, their source harness, scope, resource count, size, diagnostics, and local path:
+
+![Terminal listing from `skillctl ls --long`](docs/images/skillctl-ls.png)
+
 ### Configure nonstandard roots
 
 Custom harness definitions are an escape hatch for unsupported or nonstandard skill directories. They must use an ID other than the four reserved built-in IDs.

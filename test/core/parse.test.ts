@@ -64,4 +64,29 @@ Body text.
     expect(record.issues).toContain('description.missing');
     expect(record.issues).toContain('frontmatter.invalid');
   });
+
+  it('accepts case and underscore variations of a directory skill name', () => {
+    const source: SkillSource = {
+      candidate: {
+        adapterId: 'antigravity',
+        root: { path: '/tmp/skills', scope: 'system', precedence: 10, readonly: true },
+        logicalEntryPath: '/tmp/skills/antigravity_guide',
+        logicalFilePath: '/tmp/skills/antigravity_guide/SKILL.md',
+        physicalDirPath: '/tmp/skills/antigravity_guide',
+        physicalFilePath: '/tmp/skills/antigravity_guide/SKILL.md',
+        symlinkTarget: null
+      },
+      mainFileBytes: new TextEncoder().encode(`---
+name: Antigravity-Guide
+description: A valid skill name variation.
+---
+Body text.
+`),
+      mainFileMtime: new Date('2026-08-13T10:00:00Z'),
+      mainFileBirthtime: null,
+      resources: []
+    };
+
+    expect(parseSkill(source, '/home/user').issues).toEqual([]);
+  });
 });
