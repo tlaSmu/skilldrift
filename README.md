@@ -16,7 +16,20 @@ Inventory locally installed AI-agent skills across Claude Code, OMP, Codex, and 
 
 ## Quick Start
 
-`skilldrift` is not yet published to npm. Build it from source:
+Run a local inventory without installing globally:
+
+```sh
+npx skilldrift scan
+```
+
+Or install the CLI:
+
+```sh
+npm install --global skilldrift
+skillctl scan
+```
+
+Build from source for development:
 
 ```sh
 git clone https://github.com/tlaSmu/skilldrift.git
