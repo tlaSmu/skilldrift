@@ -24,7 +24,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "prepack": "npm run build"
+    "prepack": "npm run build && node --eval \"require('node:fs').chmodSync('dist/cli.js', 0o755)\""
   },
   "dependencies": {
     "citty": "^0.2.2",
